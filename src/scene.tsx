@@ -6,8 +6,9 @@ import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
 import { advance, initialMotion, route, ROUTE_LENGTH, STATIONS } from './simulation';
 import type { CameraMode, Status } from './simulation';
 
-useGLTF.preload('/models/agv.glb', false);
-useGLTF.preload('/models/factory.glb', false);
+const MODEL_ROOT = `${import.meta.env.BASE_URL}models/`;
+useGLTF.preload(`${MODEL_ROOT}agv.glb`, false);
+useGLTF.preload(`${MODEL_ROOT}factory.glb`, false);
 
 type Vec = [number, number, number];
 interface Props { playing: boolean; agvLight: boolean; factoryLight: boolean; speed: number; cameraMode: CameraMode; reset: number; onStatus: (status: Status) => void; onReady: () => void; }
@@ -23,7 +24,7 @@ function Rack({ x, z }: { x: number; z: number }) {
   </group>;
 }
 function FactoryScene({ bright }: { bright: boolean }) {
-  const source = useGLTF('/models/factory.glb', false).scene;
+  const source = useGLTF(`${MODEL_ROOT}factory.glb`, false).scene;
   const factory = useMemo(() => {
     const copy = source.clone(true);
     copy.traverse(o => {
@@ -71,7 +72,7 @@ function FactoryScene({ bright }: { bright: boolean }) {
   </>;
 }
 export function Scene({playing, agvLight, factoryLight, speed, cameraMode, reset, onStatus, onReady}: Props) {
-  const gltf = useGLTF('/models/agv.glb', false);
+  const gltf = useGLTF(`${MODEL_ROOT}agv.glb`, false);
   const model = useMemo(() => {
     const copy = gltf.scene.clone(true);
     copy.traverse(o => {

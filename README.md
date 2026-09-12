@@ -1,6 +1,6 @@
 # AGV Factory Showroom
 
-เว็บโชว์รูมโรงงาน 3 มิติแบบ local ใช้ Vite, React, TypeScript, Three.js, React Three Fiber และ Drei ไม่มี backend และไม่เชื่อมต่อ AGV จริง
+เว็บโชว์รูมโรงงาน 3 มิติใช้ Vite, React, TypeScript, Three.js, React Three Fiber และ Drei ไม่มี backend และไม่เชื่อมต่อ AGV จริง
 
 ## เปิดใช้งาน
 
@@ -12,6 +12,10 @@ npm run dev
 ```
 
 เปิด http://127.0.0.1:5173/ — เซิร์ฟเวอร์ผูกกับ loopback เท่านั้น ยังไม่เผยแพร่ออนไลน์
+
+## GitHub Pages
+
+การ push ไปที่ branch `main` จะเรียก workflow `.github/workflows/deploy-pages.yml` เพื่อ build และ deploy อัตโนมัติ เว็บไซต์จะอยู่ที่ `https://siripot12.github.io/MiniRWAGV-3D-WEB/` เมื่อเปิดใช้งาน Pages ใน repository แล้ว โดยเลือก Source เป็น **GitHub Actions**
 
 ```sh
 npm run build

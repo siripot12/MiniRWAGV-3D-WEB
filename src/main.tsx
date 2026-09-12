@@ -11,6 +11,7 @@ import '@fontsource/inter/500.css';
 import '@fontsource/noto-sans-thai/400.css';
 import '@fontsource/noto-sans-thai/500.css';
 import './readability.css';
+import './creator-brand.css';
 
 class Boundary extends Component<{ children: React.ReactNode }, { error: boolean }> {
   state = { error: false };
@@ -29,7 +30,7 @@ function App() {
   const onReady = useCallback(() => setReady(true), []);
   function resetAll() { setPlaying(false); setAgvLight(true); setFactoryLight(true); setSpeed(1); setCamera('overview'); setReset(v => v + 1); setStatus('พร้อม'); }
   return <div className={'app ' + (wide ? 'wide' : '')}>
-    <header><a className="brand" href="/" aria-label="AGV Factory Showroom"><span className="brand-mark"><Box size={23}/></span><b>AGV<span> / </span>STUDIO</b></a><div className="header-center"><Factory size={15}/> FACTORY SHOWROOM <span className="version">01</span></div><span className="local-badge">INTERACTIVE EXPERIENCE</span></header>
+    <header><a className="brand" href="/" aria-label="AGV Factory Showroom"><span className="brand-mark"><Box size={23}/></span><b>AGV<span> / </span>STUDIO</b></a><div className="header-center"><Factory size={15}/> FACTORY SHOWROOM <span className="version">01</span></div><span className="creator-badge">CREATED BY <strong>MINIRW Co.,Ltd.</strong></span></header>
     <main>
       <section className="viewport" aria-label="ฉากโรงงาน 3 มิติ">
         {webgl ? <Boundary><Canvas shadows dpr={[1, 1.5]} camera={{ position: [6.8, 5.7, 7.2], fov: 42, near: 0.05, far: 80 }} gl={{ antialias: true, powerPreference: 'high-performance' }} fallback={<div className="fallback">อุปกรณ์นี้ไม่รองรับ WebGL กรุณาใช้เบราว์เซอร์ที่รองรับกราฟิก 3 มิติ</div>}>
@@ -57,7 +58,7 @@ function App() {
         <button className="reset-button" onClick={resetAll}><RotateCcw size={15}/>เริ่มต้นใหม่<span>RESET</span></button>
         <div className="panel-foot"><span className="mini-logo">AGV</span><span>สภาพแวดล้อมจำลอง<br/>ขนาดอ้างอิงโดยประมาณ</span><Box size={19}/></div>
       </aside>
-    </main><footer><span>AGV STUDIO <i/> FACTORY SHOWROOM</span><span>โมเดล 3 มิติจาก Blender <span className="footer-dot">·</span> ประสบการณ์แบบเรียลไทม์</span></footer>
+    </main><footer><span>AGV STUDIO <i/> FACTORY SHOWROOM</span><span className="creator-footer">CREATED BY <strong>MINIRW Co.,Ltd.</strong><i/> โมเดล 3 มิติจาก Blender <span className="footer-dot">·</span> ประสบการณ์แบบเรียลไทม์</span></footer>
   </div>;
 }
 createRoot(document.getElementById('root')!).render(<App/>);
